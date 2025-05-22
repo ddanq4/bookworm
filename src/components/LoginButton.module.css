@@ -1,0 +1,144 @@
+.popupOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInOverlay 0.3s ease-in-out both;
+    z-index: 1000;
+}
+
+.loginPopup {
+    background: #4b81c4;
+    padding: 40px 50px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 430px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: fadeInPopup 0.4s ease-in-out both;
+}
+
+.logo {
+    font-family: 'Jolly Lodger', cursive;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.inputGroup label {
+    background: #1e293b;
+    font-size: 11px;
+    padding: 4px 10px;
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    border-radius: 6px;
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 12px 16px;
+    background: #1e293b;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+}
+
+.forgot {
+    font-size: 13px;
+    color: #cbd5e1;
+    text-align: right;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.formButton {
+    background-color: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 16px auto 10px;
+    display: block;
+    width: fit-content;
+    transition: background-color 0.2s ease;
+}
+
+.formButton:hover {
+    background-color: #324a69;
+}
+
+.divider {
+    text-align: center;
+    margin: 24px 0 14px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.googleButton {
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid white;
+    border-radius: 10px;
+    background: transparent;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.googleButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.linkSwitch {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.formWrapper {
+    position: relative;
+    min-height: 220px;
+}
+
+.fadeBlock {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.fadeBlock.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    position: relative;
+}
+
+@keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeInPopup {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0);  }
+}

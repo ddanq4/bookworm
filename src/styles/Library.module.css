@@ -1,0 +1,156 @@
+.container {
+    padding: 30px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0 10px;
+
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.searchInput {
+    width: 100%;
+    background-color: #1e293b;
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 10px 16px 10px 40px;
+    font-size: 16px;
+    outline: none;
+}
+
+.searchInput:focus {
+    border-color: var(--blue-accent);
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.icon img {
+    width: 100%;
+    height: auto;
+}
+
+.filtersRow {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.filterTrigger {
+    position: relative;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.filterTrigger:hover {
+    color: white;
+    transform: scale(1.05);
+}
+
+.filterTrigger::after {
+    content: '▾';
+    margin-left: 6px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: all 0.2s ease-in-out;
+}
+
+.filterTrigger:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown {
+    position: absolute;
+    top: 130%;
+    left: 0;
+    background-color: var(--bg-mid);
+    border-radius: 8px;
+    padding: 8px 0;
+    min-width: 160px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+.dropdownWrapper {
+    position: relative;
+}
+
+.dropdown li {
+    padding: 8px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown li:hover {
+    background-color: #2c3a4f;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(271px, 1fr));
+    gap: 32px;
+    justify-content: center;
+    padding-bottom: 60px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+    animation: fadeIn 0.4s ease-in-out both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px 60px;
+    }
+}

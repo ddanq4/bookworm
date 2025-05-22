@@ -1,0 +1,20 @@
+.breadcrumbs {
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    padding: 16px 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.breadcrumbs a {
+    color: white;
+    opacity: 0.5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.breadcrumbs a:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}

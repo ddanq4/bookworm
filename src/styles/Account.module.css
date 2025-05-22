@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.card {
+    width: 740px;
+    height: 300px;
+    background-color: #4d8ae6; /* Колір хедера */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.avatarWrapper {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.nickname {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+
+.fileInput {
+    display: none;
+}
+
+.button {
+    background-color: #111827;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 220px;
+}
+
+.logout {
+    background: none;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.loading, .unauth {
+    color: white;
+    text-align: center;
+    padding-top: 100px;
+}

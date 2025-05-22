@@ -1,0 +1,58 @@
+.headerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4f8edc;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    height: 60px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.navLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.navLinks a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.userArea {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.loginButton {
+    padding: 6px 14px;
+    background-color: white;
+    color: #4f8edc;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}

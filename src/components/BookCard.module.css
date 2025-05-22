@@ -1,0 +1,118 @@
+.addMenu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(30, 41, 59, 0.9);
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.addMenu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+.addMenu button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+
+.addMenu button:hover {
+    background-color: #475569;
+    border-radius: 8px;
+}
+
+
+.card {
+    width: 271px;
+    height: 418px;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: #1e293b;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 50px 16px 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.5) 80%, transparent 100%);
+}
+
+
+.title {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Inter', sans-serif;
+}
+
+.author {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Inter', sans-serif;
+}
+
+.addMenu button.clear {
+    color: #f87171;
+    font-weight: bold;
+}
+
+.addMenu button.clear:hover {
+    background-color: #b91c1c;
+    color: white;
+}
+.addMenu button.active {
+    background-color: #334155;
+    border-radius: 8px;
+    opacity: 1;
+}

@@ -1,0 +1,310 @@
+.reader {
+    display: flex;
+    justify-content: center; /* выравнивание по центру */
+    padding: 40px;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.main {
+    max-width: 800px;
+    flex: 1;
+}
+
+.sidebar {
+    position: fixed;
+    top: 120px;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 100;
+}
+
+
+
+.sidebar button {
+    background: transparent;
+    border: 1px solid currentColor;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: inherit;
+    transition: background-color 0.2s;
+}
+
+.sidebar span {
+    text-align: center;
+    font-size: 14px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.text {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.error {
+    color: #f87171;
+    padding: 20px;
+}
+
+.loading {
+    color: #cbd5e1;
+    padding: 20px;
+}
+.sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fontControl {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.fontControl span {
+    font-size: 14px;
+    padding: 0 4px;
+    min-width: 40px;
+    text-align: center;
+}
+.notePrompt {
+    position: absolute;
+    background: #1f2937;
+    color: #fff;
+    padding: 16px 20px;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    z-index: 200;
+    max-width: 360px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+    line-height: 1.5;
+}
+.scrollable {
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+
+    /* Браузеры на движке Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: #64748b transparent;
+}
+
+/* WebKit-браузеры (Chrome, Edge, Safari) */
+.scrollable::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: #64748b;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    transition: background-color 0.3s ease;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+}
+
+
+.notePrompt blockquote {
+    margin: 10px 0;
+    font-size: 13px;
+    color: #94a3b8;
+    padding-left: 12px;
+    border-left: 3px solid #475569;
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notePrompt textarea {
+    width: 100%;
+    min-height: 80px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 10px;
+    resize: vertical;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.notePrompt textarea:focus {
+    border-color: #60a5fa;
+    outline: none;
+}
+
+.notePrompt button {
+    margin-top: 12px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid currentColor;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notePrompt button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+/* Существующие стили сохранены выше */
+
+.sidebarRight {
+    position: fixed;
+    top: 120px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+    max-width: 240px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.noteItem {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #e2e8f0;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.noteItem:hover {
+    background-color: #1e293b;
+    transform: scale(1.02);
+}
+
+.notePopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background: #1e293b;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    z-index: 1000;
+    color: #f8fafc;
+    max-width: 500px;
+    width: 90%;
+    animation: popupFade 0.3s ease;
+}
+
+.notePopupContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideUp 0.3s ease;
+}
+
+.notePopupContent textarea {
+    background: #0f172a;
+    color: #e2e8f0;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    padding: 10px;
+    resize: vertical;
+    font-size: 14px;
+    font-family: inherit;
+    min-height: 80px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.notePopupContent textarea:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    outline: none;
+}
+
+.noteActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.noteActions button {
+    background: transparent;
+    border: 1px solid #64748b;
+    color: #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.noteActions button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.highlight {
+    background-color: #facc15;
+    color: #000;
+    transition: background-color 0.3s ease;
+}
+.notePopupContent blockquote {
+    font-size: 13px;
+    color: #94a3b8;
+    padding-left: 12px;
+    border-left: 3px solid #475569;
+    margin: 0;
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.selectedQuote {
+    margin: 0;
+    padding: 4px 6px;
+    font-style: normal;
+    border-left: 3px solid rgba(255, 255, 0, 0.8);
+    white-space: pre-wrap;
+}
+.saveStatus {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 9999;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popupFade {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
