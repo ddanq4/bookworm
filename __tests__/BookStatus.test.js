@@ -1,5 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import BookCard from '@/components/BookCard';
+import React from 'react';
+
 
 const mockBook = {
     id: '42',

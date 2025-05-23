@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import ReaderPage from '@/pages/reader';
+import React from 'react';
+
 
 describe('ReaderPage', () => {
     it('отображает панель управления', () => {

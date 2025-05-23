@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import LoginButton from '@/components/LoginButton';
 import { AuthContext } from '@/firebase/AuthProvider';
+import React from 'react';
+
 
 describe('LoginButton', () => {
     it('показывает "Вийти", если пользователь залогинен', () => {
