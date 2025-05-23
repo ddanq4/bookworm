@@ -29,6 +29,8 @@ describe('AccountPage', () => {
         await act(async () => {
             render(<AccountPage />);
         });
+
+        // 🔥 жёстко ждём загрузку поля
         expect(await screen.findByPlaceholderText(/Ваше ім’я/i)).toBeInTheDocument();
     });
 });
