@@ -11,6 +11,8 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Проєкт використовує FireStone і gutendex.com у якості джерела книг.
+
 Відео огляд: https://youtu.be/KJjo-WV1sQY
+
 circleci: https://app.circleci.com/pipelines/circleci/MvuWAN3KMcrVb3Lv7fSLGr/TN7T5AhnViK985AiQMEAvT?branch=master
 
