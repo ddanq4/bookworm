@@ -1,5 +1,7 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from './firebaseConfig';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
 
 export const register = (email, password) =>
     createUserWithEmailAndPassword(auth, email, password);
