@@ -1,16 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import LoginPopup from '@/components/LoginButton'; // путь правильный!
+import LoginPopup from '@/components/LoginButton'; // это твой LoginPopup
 import * as auth from '@/firebase/auth';
 import React from 'react';
 
-jest.mock('firebase/auth', () => {
-    const original = jest.requireActual('firebase/auth');
-    return {
-        ...original,
-        signInWithPopup: jest.fn(() => Promise.resolve({ user: { uid: '123', email: 'test@mail.com' } })),
-        GoogleAuthProvider: jest.fn(),
-    };
-});
+jest.mock('@/firebase/auth', () => ({
+    loginWithGoogle: jest.fn(),
+    logout: jest.fn(),
+}));
 
 describe('LoginPopup (LoginButton)', () => {
     it('вызывает loginWithGoogle при клике', () => {
