@@ -13,14 +13,9 @@ jest.mock('next/router', () => ({
 
 const book = {
     id: 'abc123',
-    volumeInfo: {
-        title: 'Test Book',
-        authors: ['Author A'],
-        publishedDate: '2020',
-        imageLinks: {
-            thumbnail: 'https://example.com/image.jpg'
-        }
-    }
+    title: 'Test Book',
+    authors: [{ name: 'Author A' }],
+    formats: { 'image/jpeg': 'https://example.com/image.jpg' },
 };
 
 describe('BookCard', () => {

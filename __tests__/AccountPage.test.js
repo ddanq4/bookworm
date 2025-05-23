@@ -11,9 +11,20 @@ jest.mock('next/router', () => ({
     }),
 }));
 
+jest.mock('@/firebase/firebaseConfig', () => {
+    const originalModule = jest.requireActual('@/firebase/firebaseConfig');
+    return {
+        ...originalModule,
+        auth: {
+            currentUser: { uid: '123' },
+            onAuthStateChanged: (cb) => cb({ uid: '123' }),
+        }
+    };
+});
+
 describe('AccountPage', () => {
-    it('отображает поле имени пользователя', () => {
+    it('отображает поле имени пользователя', async () => {
         render(<AccountPage />);
-        expect(screen.getByPlaceholderText(/Ваше ім’я/i)).toBeInTheDocument();
+        expect(await screen.findByPlaceholderText(/Ваше ім’я/i)).toBeInTheDocument();
     });
 });

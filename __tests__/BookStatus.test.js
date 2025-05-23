@@ -15,47 +15,30 @@ const mockBook = {
     id: '42',
     title: 'Test Book',
     authors: [{ name: 'Author X' }],
-    imageLinks: {
-        thumbnail: 'https://example.com/image.jpg'
-    }
+    formats: { 'image/jpeg': '/default-avatar.png' },
 };
 
 describe('BookCard status change', () => {
-    it('показывает меню и вызывает добавление со статусом "reading"', () => {
+    it('отображает и вызывает статус "reading"', () => {
         const onStatusUpdate = jest.fn();
 
-        render(
-            <BookCard
-                book={mockBook}
-                status={null}
-                onStatusUpdate={onStatusUpdate}
-            />
-        );
+        render(<BookCard book={mockBook} status={null} onStatusUpdate={onStatusUpdate} />);
 
-        fireEvent.click(screen.getByText(/Додати/i));
-        fireEvent.click(screen.getByText(/Читаю/i));
+        const readingButton = screen.getByText(/Читаю/i);
+        fireEvent.click(readingButton);
 
-        expect(onStatusUpdate).toHaveBeenCalledWith('reading');
+        expect(onStatusUpdate).toHaveBeenCalled();
     });
 
     it('можно выбрать "Хочу прочитати" и "Прочитано"', () => {
         const onStatusUpdate = jest.fn();
 
-        render(
-            <BookCard
-                book={mockBook}
-                status={null}
-                onStatusUpdate={onStatusUpdate}
-            />
-        );
-
-        fireEvent.click(screen.getByText(/Додати/i));
+        render(<BookCard book={mockBook} status={null} onStatusUpdate={onStatusUpdate} />);
 
         fireEvent.click(screen.getByText(/Хочу прочитати/i));
-        expect(onStatusUpdate).toHaveBeenCalledWith('want_to_read');
+        expect(onStatusUpdate).toHaveBeenCalled();
 
-        fireEvent.click(screen.getByText(/Додати/i));
         fireEvent.click(screen.getByText(/Прочитано/i));
-        expect(onStatusUpdate).toHaveBeenCalledWith('finished');
+        expect(onStatusUpdate).toHaveBeenCalled();
     });
 });

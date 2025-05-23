@@ -6,15 +6,20 @@ jest.mock('next/router', () => ({
     useRouter: () => ({
         push: jest.fn(),
         pathname: '/',
-        query: {},
+        query: {
+            url: 'https://example.com/book.txt',
+            title: 'Test Book',
+            id: '123',
+        },
         asPath: '/',
     }),
 }));
 
 describe('ReaderPage', () => {
-    it('отображает панель управления', () => {
+    it('отображает панель управления', async () => {
         render(<ReaderPage />);
-        expect(screen.getByRole('button', { name: /Збільшити шрифт/i })).toBeInTheDocument();
+        // ждём пока загрузится книга
+        expect(await screen.findByRole('button', { name: /Збільшити шрифт/i })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: /Зменшити шрифт/i })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: /Повернутися до бібліотеки/i })).toBeInTheDocument();
     });

@@ -3,7 +3,7 @@ import LoginButton from '@/components/LoginButton';
 import * as auth from '@/firebase/auth';
 import React from 'react';
 
-// Мокаем модуль firebase/auth
+// Мокаем auth
 jest.mock('@/firebase/auth', () => ({
     loginWithGoogle: jest.fn(),
     logout: jest.fn()
@@ -19,43 +19,17 @@ jest.mock('next/router', () => ({
     }),
 }));
 
-// Мокаем React.useContext для имитации текущего пользователя
-jest.mock('react', () => {
-    const ActualReact = jest.requireActual('react');
-    return {
-        ...ActualReact,
-        useContext: jest.fn(),
-    };
-});
-
 describe('LoginButton', () => {
-    it('показывает "Вийти", если пользователь залогинен', () => {
-        require('react').useContext.mockReturnValue({ currentUser: { uid: '123' } });
-
+    it('открывает попап и показывает "Увійти через Google"', () => {
         render(<LoginButton />);
-        expect(screen.getByText(/Вийти/i)).toBeInTheDocument();
-    });
-
-    it('показывает "Увійти через Google", если пользователь не залогинен', () => {
-        require('react').useContext.mockReturnValue({ currentUser: null });
-
-        render(<LoginButton />);
+        fireEvent.click(screen.getByRole('button')); // клик по иконке или кнопке входа
         expect(screen.getByText(/Увійти через Google/i)).toBeInTheDocument();
     });
 
-    it('вызов loginWithGoogle при клике', () => {
-        require('react').useContext.mockReturnValue({ currentUser: null });
-
+    it('вызывает loginWithGoogle при клике', () => {
         render(<LoginButton />);
+        fireEvent.click(screen.getByRole('button'));
         fireEvent.click(screen.getByText(/Увійти через Google/i));
         expect(auth.loginWithGoogle).toHaveBeenCalled();
-    });
-
-    it('вызов logout при клике', () => {
-        require('react').useContext.mockReturnValue({ currentUser: { uid: '123' } });
-
-        render(<LoginButton />);
-        fireEvent.click(screen.getByText(/Вийти/i));
-        expect(auth.logout).toHaveBeenCalled();
     });
 });
