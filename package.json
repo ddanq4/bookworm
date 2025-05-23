@@ -32,11 +32,5 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
-  },
-  "jest": {
-    "testEnvironment": "jest-environment-jsdom",
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-    }
   }
 }
