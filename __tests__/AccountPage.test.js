@@ -11,15 +11,24 @@ jest.mock('next/router', () => ({
     }),
 }));
 
-jest.mock('@/firebase/firebaseConfig', () => ({
-    auth: {
-        onAuthStateChanged: (cb) => cb({ uid: '123' }),
-        currentUser: { uid: '123' }
-    },
-    db: {
-        collection: jest.fn()
-    }
-}));
+jest.mock('@/firebase/firebaseConfig', () => {
+    return {
+        auth: {
+            currentUser: { uid: '123' },
+            onAuthStateChanged: (cb) => cb({ uid: '123' })
+        },
+        db: {
+            collection: () => ({
+                doc: () => ({
+                    get: () => Promise.resolve({ exists: () => false }),
+                    set: () => Promise.resolve(),
+                    update: () => Promise.resolve()
+                })
+            })
+        }
+    };
+});
+
 
 describe('AccountPage', () => {
     it('отображает поле имени пользователя', async () => {

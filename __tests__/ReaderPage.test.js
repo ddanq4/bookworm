@@ -26,7 +26,7 @@ describe('ReaderPage', () => {
     it('отображает панель управления', async () => {
         render(<ReaderPage />);
         expect(await screen.findByText('+')).toBeInTheDocument();
-        expect(screen.getByText('-')).toBeInTheDocument();
+        expect(screen.getByText('\u2212')).toBeInTheDocument();
         expect(screen.getByText(/Повернутися до бібліотеки/i)).toBeInTheDocument();
     });
 });

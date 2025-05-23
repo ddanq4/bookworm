@@ -2,15 +2,24 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import BookCard from '@/components/BookCard';
 import React from 'react';
 
-jest.mock('@/firebase/firebaseConfig', () => ({
-    auth: { currentUser: { uid: '123' } },
-    db: {
-        doc: () => ({}),
-        getDoc: () => Promise.resolve({ exists: () => false }),
-        setDoc: () => Promise.resolve(),
-        updateDoc: () => Promise.resolve(),
-    }
-}));
+jest.mock('@/firebase/firebaseConfig', () => {
+    return {
+        auth: {
+            currentUser: { uid: '123' },
+            onAuthStateChanged: (cb) => cb({ uid: '123' })
+        },
+        db: {
+            collection: () => ({
+                doc: () => ({
+                    get: () => Promise.resolve({ exists: () => false }),
+                    set: () => Promise.resolve(),
+                    update: () => Promise.resolve()
+                })
+            })
+        }
+    };
+});
+
 
 jest.mock('next/router', () => ({
     useRouter: () => ({
