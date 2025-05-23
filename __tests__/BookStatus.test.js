@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import BookCard from '@/components/BookCard';
 import React from 'react';
 
+
 jest.mock('@/firebase/firebaseConfig', () => ({
     auth: { currentUser: { uid: '123' } },
     db: {},
@@ -12,7 +13,9 @@ jest.mock('firebase/firestore', () => ({
     getDoc: () => Promise.resolve({ exists: () => false }),
     setDoc: () => Promise.resolve(),
     updateDoc: () => Promise.resolve(),
+    serverTimestamp: () => 'MOCK_TIMESTAMP',
 }));
+
 
 beforeAll(() => {
     window.alert = jest.fn();

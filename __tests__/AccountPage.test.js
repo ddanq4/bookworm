@@ -2,6 +2,15 @@ import { render, screen, act } from '@testing-library/react';
 import AccountPage from '@/pages/account';
 import React from 'react';
 
+jest.mock('next/router', () => ({
+    useRouter: () => ({
+        push: jest.fn(),
+        pathname: '/',
+        query: {},
+        asPath: '/',
+    }),
+}));
+
 jest.mock('@/firebase/firebaseConfig', () => ({
     auth: {
         currentUser: { uid: '123' },
