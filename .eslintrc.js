@@ -13,6 +13,11 @@ module.exports = {
   },
   extends: ['next/core-web-vitals', 'eslint:recommended', 'plugin:react/recommended'],
   rules: {
-    'react/react-in-jsx-scope': 'off'
-  }
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
+    '@next/next/no-img-element': 'off',
+    'no-unused-vars': 'warn',
+    'no-undef': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
 };
