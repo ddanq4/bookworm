@@ -2,6 +2,14 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import BookCard from '@/components/BookCard';
 import React from 'react';
 
+jest.mock('next/router', () => ({
+    useRouter: () => ({
+        push: jest.fn(),
+        pathname: '/',
+        query: {},
+        asPath: '/',
+    }),
+}));
 
 const mockBook = {
     id: '42',

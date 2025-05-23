@@ -3,6 +3,14 @@ import LoginButton from '@/components/LoginButton';
 import { AuthContext } from '@/firebase/AuthProvider';
 import React from 'react';
 
+jest.mock('next/router', () => ({
+    useRouter: () => ({
+        push: jest.fn(),
+        pathname: '/',
+        query: {},
+        asPath: '/',
+    }),
+}));
 
 describe('LoginButton', () => {
     it('показывает "Вийти", если пользователь залогинен', () => {

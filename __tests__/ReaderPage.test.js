@@ -2,6 +2,14 @@ import { render, screen } from '@testing-library/react';
 import ReaderPage from '@/pages/reader';
 import React from 'react';
 
+jest.mock('next/router', () => ({
+    useRouter: () => ({
+        push: jest.fn(),
+        pathname: '/',
+        query: {},
+        asPath: '/',
+    }),
+}));
 
 describe('ReaderPage', () => {
     it('отображает панель управления', () => {

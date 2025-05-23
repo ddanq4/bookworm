@@ -3,6 +3,14 @@ import LibraryPage from '@/pages/library';
 import { LibraryContext } from '@/firebase/LibraryProvider';
 import React from 'react';
 
+jest.mock('next/router', () => ({
+    useRouter: () => ({
+        push: jest.fn(),
+        pathname: '/',
+        query: {},
+        asPath: '/',
+    }),
+}));
 
 const fakeLibrary = [
     { id: '1', status: 'want', volumeInfo: { title: 'Book 1' } },
