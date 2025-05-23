@@ -2,16 +2,15 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import BookCard from '@/components/BookCard';
 import React from 'react';
 
-// Мокаем auth
 jest.mock('@/firebase/firebaseConfig', () => ({
     auth: { currentUser: { uid: '123' } },
-    db: {},
+    db: {
+        doc: () => ({}),
+        getDoc: () => Promise.resolve({ exists: () => false }),
+        setDoc: () => Promise.resolve(),
+        updateDoc: () => Promise.resolve(),
+    }
 }));
-
-// Мокаем window.alert
-beforeAll(() => {
-    window.alert = jest.fn();
-});
 
 jest.mock('next/router', () => ({
     useRouter: () => ({
@@ -22,6 +21,10 @@ jest.mock('next/router', () => ({
     }),
 }));
 
+beforeAll(() => {
+    window.alert = jest.fn();
+});
+
 const mockBook = {
     id: '42',
     title: 'Test Book',
@@ -30,7 +33,7 @@ const mockBook = {
 };
 
 describe('BookCard status change', () => {
-    it('отображает и вызывает статус "reading"', async () => {
+    it('отображает и вызывает статус "reading"', () => {
         const onStatusUpdate = jest.fn();
         render(<BookCard book={mockBook} status={null} onStatusUpdate={onStatusUpdate} />);
         fireEvent.click(screen.getByText(/Читаю/i));

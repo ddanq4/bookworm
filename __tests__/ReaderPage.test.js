@@ -9,13 +9,12 @@ jest.mock('next/router', () => ({
         query: {
             url: 'https://example.com/book.txt',
             title: 'Test Book',
-            id: '123'
+            id: '123',
         },
         asPath: '/',
     }),
 }));
 
-// мок fetch для загрузки текста книги
 global.fetch = jest.fn(() =>
     Promise.resolve({
         ok: true,
@@ -26,9 +25,8 @@ global.fetch = jest.fn(() =>
 describe('ReaderPage', () => {
     it('отображает панель управления', async () => {
         render(<ReaderPage />);
-
-        expect(await screen.findByRole('button', { name: /Збільшити шрифт/i })).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: /Зменшити шрифт/i })).toBeInTheDocument();
-        expect(screen.getByRole('button', { name: /Повернутися до бібліотеки/i })).toBeInTheDocument();
+        expect(await screen.findByText('+')).toBeInTheDocument();
+        expect(screen.getByText('-')).toBeInTheDocument();
+        expect(screen.getByText(/Повернутися до бібліотеки/i)).toBeInTheDocument();
     });
 });

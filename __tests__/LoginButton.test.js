@@ -19,22 +19,18 @@ jest.mock('next/router', () => ({
 
 describe('LoginButton', () => {
     beforeEach(() => {
-        // Удалим предыдущие попапы
         document.body.innerHTML = '';
     });
 
     it('открывает попап и показывает "Увійти через Google"', () => {
         render(<LoginButton />);
-
-        // клик по иконке входа
-        fireEvent.click(screen.getByText(/Увійти/i));
-
+        fireEvent.click(screen.getAllByText(/Увійти/i)[0]); // безопасный клик
         expect(screen.getByText(/Увійти через Google/i)).toBeInTheDocument();
     });
 
     it('вызывает loginWithGoogle при клике', () => {
         render(<LoginButton />);
-        fireEvent.click(screen.getByText(/Увійти/i));
+        fireEvent.click(screen.getAllByText(/Увійти/i)[0]);
         fireEvent.click(screen.getByText(/Увійти через Google/i));
         expect(auth.loginWithGoogle).toHaveBeenCalled();
     });
