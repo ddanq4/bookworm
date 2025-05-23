@@ -12,6 +12,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Проєкт використовує FireStone і gutendex.com у якості джерела книг.
 Відео огляд: https://youtu.be/KJjo-WV1sQY
-
-[![CircleCI](https://circleci.com/gh/ddanq4/bookworm.svg?style=svg)](https://circleci.com/gh/ddanq4/bookworm)
+circleci: https://app.circleci.com/pipelines/circleci/MvuWAN3KMcrVb3Lv7fSLGr/TN7T5AhnViK985AiQMEAvT?branch=master
 
