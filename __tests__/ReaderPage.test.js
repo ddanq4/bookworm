@@ -9,16 +9,24 @@ jest.mock('next/router', () => ({
         query: {
             url: 'https://example.com/book.txt',
             title: 'Test Book',
-            id: '123',
+            id: '123'
         },
         asPath: '/',
     }),
 }));
 
+// мок fetch для загрузки текста книги
+global.fetch = jest.fn(() =>
+    Promise.resolve({
+        ok: true,
+        text: () => Promise.resolve('Ось текст книги.'),
+    })
+);
+
 describe('ReaderPage', () => {
     it('отображает панель управления', async () => {
         render(<ReaderPage />);
-        // ждём пока загрузится книга
+
         expect(await screen.findByRole('button', { name: /Збільшити шрифт/i })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: /Зменшити шрифт/i })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: /Повернутися до бібліотеки/i })).toBeInTheDocument();

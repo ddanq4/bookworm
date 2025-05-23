@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import AccountPage from '@/pages/account';
 import React from 'react';
 
@@ -24,7 +24,9 @@ jest.mock('@/firebase/firebaseConfig', () => {
 
 describe('AccountPage', () => {
     it('отображает поле имени пользователя', async () => {
-        render(<AccountPage />);
+        await act(async () => {
+            render(<AccountPage />);
+        });
         expect(await screen.findByPlaceholderText(/Ваше ім’я/i)).toBeInTheDocument();
     });
 });

@@ -16,7 +16,7 @@ const book = {
     title: 'Modal Book',
     authors: [{ name: 'Author X' }],
     formats: { 'image/jpeg': 'https://example.com/cover.jpg' },
-    description: 'Description text'
+    subjects: ['Test Subject 1', 'Test Subject 2']
 };
 
 describe('BookModal', () => {
@@ -33,6 +33,6 @@ describe('BookModal', () => {
 
         expect(screen.getByText(/Modal Book/i)).toBeInTheDocument();
         expect(screen.getByText(/Author X/i)).toBeInTheDocument();
-        expect(screen.getByText(/Description text/i)).toBeInTheDocument();
+        expect(screen.getByText(/Опис: Test Subject 1, Test Subject 2/i)).toBeInTheDocument();
     });
 });
