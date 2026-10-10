@@ -1,18 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Bookworm
 
-## Getting Started
+A web app for browsing and reading books and keeping your own library.
 
-First, run the development server:
+Books are loaded from [Gutendex](https://gutendex.com) (a catalogue of Project Gutenberg). Accounts and each user's library are stored in Firebase.
+
+[Video overview](https://youtu.be/KJjo-WV1sQY)
+
+## Features
+
+- Search and browse the book catalogue
+- Book details in a modal window
+- Registration and sign-in (Firebase Authentication)
+- Personal library with reading statuses
+- Built-in reader page
+- Unit tests for the main components and pages (Jest), CI on CircleCI
+
+## Tech stack
+
+Next.js (pages router), React, Firebase (Auth + Firestore), CSS Modules, Jest.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-Проєкт використовує FireStone і gutendex.com у якості джерела книг.
+Other scripts:
 
-Відео огляд: https://youtu.be/KJjo-WV1sQY
+| Command | Description |
+|---|---|
+| `npm run build` | production build |
+| `npm start` | run the production build |
+| `npm run lint` | lint |
+| `npm test` | run the tests |
 
-circleci: https://app.circleci.com/pipelines/circleci/MvuWAN3KMcrVb3Lv7fSLGr/TN7T5AhnViK985AiQMEAvT?branch=master
+## Project structure
 
+```
+src/
+  components/   UI components (BookCard, BookModal, Header, ...)
+  firebase/     Firebase initialisation, auth and Firestore helpers
+  pages/        routes: home, library, reader, account, auth
+  styles/       global styles
+__tests__/      component and page tests
+```
