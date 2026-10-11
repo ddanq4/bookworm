@@ -6,6 +6,16 @@ Books are loaded from [Gutendex](https://gutendex.com) (a catalogue of Project G
 
 [Video overview](https://youtu.be/KJjo-WV1sQY)
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/home.jpg" alt="Book catalogue with search" width="49%">
+  <img src="docs/screenshots/book-details.jpg" alt="Book details" width="49%">
+</p>
+<p align="center">
+  <img src="docs/screenshots/reader.jpg" alt="Built-in reader" width="49%">
+</p>
+
 ## Features
 
 - Search and browse the book catalogue
